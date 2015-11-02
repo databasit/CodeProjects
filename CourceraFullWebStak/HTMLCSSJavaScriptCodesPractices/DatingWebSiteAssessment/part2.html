@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Dating Web Site Assement</title>
+  <style>
+    fieldset {
+      background-color: lightyellow;
+      border: 10px solid yellow;
+      margin-bottom: 10px;
+      width: 720px;
+    }
+
+    label {
+      width: 180px;
+      display: inline-block;
+      text-align: right;
+      text-align: top;
+      font-size: 14px;
+    }
+
+    .WidthLabelCbxRadio {
+      width: auto;
+    }
+
+    .BoxRange1 {
+      width: 20px;
+      height: 20px;
+      background-color: darkred;
+      display: inline-block;
+      padding-top: 10px;
+      padding-right: 25px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      /*Or I can do this way: padding:10px 25px 10px 10px*/
+    }
+
+    .BoxRange2 {
+      width: 20px;
+      height: 20px;
+      background-color: purple;
+      display: inline-block;
+      padding-top: 10px;
+      padding-right: 25px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+    }
+
+    .SpanRanges {
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    textarea {
+      width: 360px;
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Please Enter Your Details for Our Dating Website!</h1>
+  <form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <legend>Your face</legend>
+      <label for="lblYourImg">Your Image:</label>
+      <input type="file" name="fileToUpload" required>
+      <br>
+      <label for="lblImgPrev">Image Preview:</label>
+      <img   id="preview">
+    </fieldset>
+    <fieldset>
+      <legend>Yor General Details</legend>
+      <label for="lblName:">Name:</label>
+      <input type="text" name="txtName" required>
+      <br>
+      <label for="lblGender">Gender:</label>
+      <input type="radio" name="rdbGender" required class="WidthLabelCbxRadio">Male
+      <input type="radio" name="rdbGender" required class="WidthLabelCbxRadio">Female
+      <br>
+      <label for="lblAge">Age:</label>
+      <input type="number" name="txtAge" required>
+      <br>
+      <label for="lblBday">Date of birth:</label>
+      <input type="date">
+      <br>
+      <label for="lblColor">Favorite Color:</label>
+      <input type="color">
+      <br>
+      <label for="lblCountry">Which country:</label>
+      <select name="sltCountries">
+        <option value="SelectOne">No Selection</option>
+        <option value="AR">Argentina</option>
+        <option value="BG">Bulgaria</option>
+        <option value="CN">China</option>
+        <option value="DO">Dominican Republic</option>
+        <option value="EG">Egypt</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <legend>Your indicators</legend>
+      <label for="lblHeight">Height: </label>
+      <div class="BoxRange1">
+        <span class="SpanRanges">Short</span>
+      </div>
+      <input type="range" name="rgnHeight" min="0" max="100">
+      <div class="BoxRange2">
+        <span class="SpanRanges">Tall</span>
+      </div>
+      <br>
+      <label for="lblSlary">Salary:</label>
+      <span class="BoxRange1">
+        <span class="SpanRanges">Poor</span>
+      </span>
+      <input type="range" name="rgnSalary" min="0" max="100">
+      <div class="BoxRange2">
+        <span class="SpanRanges">Rich</span>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Your Contact Information</legend>
+      <label for="lblEmail">Email:</label>
+      <input type="email" required name="txtMail">
+      <br>
+      <label for="lblMobile">Mobile:</label>
+      <input type="tel" name="txtMobile">
+      <br>
+      <label for="lblAddress">Address:</label>
+      <textarea rows="2" cols="20" maxlength="50"> </textarea>
+      <br>
+      <label for="lblMethodContact">Method to contact you:</label>
+      <input type="checkbox" name="cbxMethodContact" value="1" required class="widthLabelCbxRadio" />Email
+      <input type="checkbox" name="cbxMethodContact" value="2" required class="widthLabelCbxRadio" />Whatsap
+      <input type="checkbox" name="cbxMethodContact" value="3" required class="widthLabelCbxRadio" />in-app chat
+    </fieldset>
+    <input type="submit" value="Subtmit!" />
+  </form>
+</body>
+
+</html>
