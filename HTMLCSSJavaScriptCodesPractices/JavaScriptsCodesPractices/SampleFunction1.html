@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample JavaScript Function 1</title>
+</head>
+
+<body onload="do_it(4)">
+  <script>
+    function do_it(time) {
+      alert("Sample Function 1");
+       if (good(time)) {
+        alert("Good");
+      } else if (bad(time)) {
+        alert("bad");
+      } else {
+        alert("OK!");
+      }
+    }
+
+    function good(time) {
+      if (time <= 3){
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+
+    function bad(time) {
+      if (time >= 5) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  </script>
+</body>
+
+</html>
