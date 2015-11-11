@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Guessing Game Part 1</title>
+  <script>
+    //===== Program variables //
+    var target_index;
+    var target_input;
+    var target;
+    var finished = false;
+    var guesess = 0;
+
+    // ==== Array Colors ===== //
+    var colors = ["White", "Silver", "Black", "Red", "Maroon", "Yellow", "Olive",
+      "Lime", "Green", "Aqua", "Teal", "Blue", "Navy", "Fuchsia", "Purple"
+    ];
+
+    // ==== Functions =====//
+    function do_game() {
+
+      target_index = Math.floor(Math.random(colors.length - 1) * colors.length);
+
+      while (!finished) {
+
+        target_input = prompt("I am thinking of one of these colors: " +
+          "\n\n" + colors.join() + "\n\n\n" + "What color am I thinking of?");
+        target = colors.indexOf(target_input);
+        //guesess += 1
+        finished = check_Guess_Color();
+      }
+    } //End of function do_game
+
+    function check_Guess_Color() {
+      if (target != target_index) {
+        //alert("You Lost. The color was : " + colors[target_index]);
+        return false;
+      }
+      //next requirments here ...
+      alert("Congratulations! You have guessed the color! \n" + "(Part 2 here)");
+      return true;
+    }
+
+  </script>
+</head>
+
+<body onload="do_game()">
+
+</body>
+
+</html>
