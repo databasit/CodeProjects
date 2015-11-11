@@ -20,28 +20,20 @@
     // ==== Functions =====//
     function do_game() {
 
-      target_index = Math.floor(Math.random(colors.length - 1) * colors.length);
+     target_index = Math.floor(Math.random(colors.length - 1) * colors.length);
 
       while (!finished) {
 
         target_input = prompt("I am thinking of one of these colors: " +
           "\n\n" + colors.join() + "\n\n\n" + "What color am I thinking of?");
         target = colors.indexOf(target_input);
-        //guesess += 1
-        finished = check_Guess_Color();
+
+        if ((target) == (target_index)) {
+          alert("Congratulations! You have guessed the color!");
+          finished = true;
+        }
       }
     } //End of function do_game
-
-    function check_Guess_Color() {
-      if (target != target_index) {
-        //alert("You Lost. The color was : " + colors[target_index]);
-        return false;
-      }
-      //next requirments here ...
-      alert("Congratulations! You have guessed the color! \n" + "(Part 2 here)");
-      return true;
-    }
-
   </script>
 </head>
 
