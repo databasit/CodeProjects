@@ -5,19 +5,19 @@
   <meta charset="utf-8">
   <title>Guessing Game Part 2</title>
   <script>
-    //===== Program variables //
+    // *** Program variables
     var target_index;
     var target_input;
     var target;
     var finished = false;
     var guesess = 0;
 
-    // ==== Array Colors ===== //
+    // *** Array Colors
     var colors = ["White", "Silver", "Black", "Red", "Maroon", "Yellow", "Olive",
       "Lime", "Green", "Aqua", "Teal", "Blue", "Navy", "Fuchsia", "Purple"
     ];
 
-    // ==== Functions =====//
+    // *** Functions
     function do_game() {
 
       target_index = Math.floor(Math.random(colors.length - 1) * colors.length);
@@ -27,26 +27,53 @@
         target_input = prompt("I am thinking of one of these colors: " +
           "\n\n" + colors.join() + "\n\n\n" + "What color am I thinking of?");
         target = colors.indexOf(target_input);
-        //guesess += 1
-        finished = check_Guess_Color();
+        guesess += 1;
+        finished = check_guess_Color();
       }
-    } //End of function do_game
+    }
 
-    function check_Guess_Color() {
-      if (target != target_index) {
-        //alert("You Lost. The color was : " + colors[target_index]);
+    function check_guess_Color() {
+
+      alert(colors[target_index]);
+
+      if (target_input > colors[target_index]) {
+        alert("Sorry, your guess is not correct!" +
+          " \n Hit: your color is alphabetically higher than mine." +
+          " \n Please try again.");
+        return false;
+      } else if (target_input < colors[target_index]) {
+        alert("Sorry, your guess is not correct!" +
+          " \n Hit: your color is alphabetically lower than mine." +
+          " \n Please try again.");
         return false;
       }
-      //next requirments here ...
-      alert("Congratulations! You have guessed the color! \n" + "(Part 2 here)");
+      if (target < 0) {
+        alert("Sorry, I don't recognize your color." + "\n Please try again.");
+        return false;
+      }
+      if (target != target_index) {
+        return false;
+      }
+      alert("Congratulations! You have guessed the color!" +
+        " \n\n It took you " + guesess + " guesess to finish the game!" +
+        "\n\n You can see the color in the background.");
+
+      changeBodyBackground(colors[target_index]);
+
       return true;
     }
 
+    function changeBodyBackground(color) {
+      var string1 = "Your color was: ";
+      var string2 = color + " !!";
+      document.write("<center><h1>" + string1.concat(string2) + "</h1></center>");
+      document.body.style.background = color;
+    }
   </script>
 </head>
 
 <body onload="do_game()">
-
+  
 </body>
 
 </html>
