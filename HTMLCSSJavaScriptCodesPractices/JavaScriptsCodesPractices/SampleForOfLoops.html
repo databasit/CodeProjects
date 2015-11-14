@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample javascript For Of Loops </title>
+  <script type="text/javascript">
+    /*
+      For Of : Go through the array and
+               take the actual items.
+      */
+
+    var continents = ["Austrialia", "Africa", "Antarctica", "Eurasia", "America"];
+    var response, count = 0;
+
+    for (var continent of continents) {
+      response = confirm("Have you been to " +
+        continent + "?");
+      if (response) count++;
+    }
+    alert("You have been to " + count + " continents!")
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

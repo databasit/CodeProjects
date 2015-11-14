@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample javascript Loop Break Control</title>
+  <script type="text/javascript">
+    var total_amount = 0;
+    while (true) {
+      this_amount = prompt("How much this account?");
+      this_amount = parseFloat(this_amount);
+      if (this_amount > 0)
+        total_amount += this_amount;
+      else
+      //here the break control !
+        break;
+    }
+    alert("Your total saving: " + total_amount);
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

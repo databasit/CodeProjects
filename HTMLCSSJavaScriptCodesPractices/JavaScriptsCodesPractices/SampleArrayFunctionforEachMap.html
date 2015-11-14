@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample javascript array function</title>
+  <script type="text/javascript">
+    var pets = ["Dog", "Cat", "Hamster"];
+    for (var i = 0; i < pets.length; i++) {
+      alert("Traditional Way of going through item in an array  " + pets[i]);
+    }
+
+    var pets2 = ["Dog", "Cat", "Hamster"];
+    pets2.forEach(alert);
+    //this shows 3 seprate alerts
+
+    //Other example:
+
+    var numbers = [1, 2, 3, 4, 5];
+    numbers.forEach(function(elem, idx, arr) {
+      arr[idx] = elem * elem;
+    });
+    alert(numbers); // this shows [1,4,9,16,25]
+
+    /*Sample of the MAP()
+     stores the result of each execution
+     of function into an array it reuturn.
+      Yuo can think of map() in this way:
+    */
+
+    //this fucntion shows how map works
+    function map(theArray, fn) {
+      var results = [];
+      for (var i = 0; i < theArray.length; i++) {
+        results.push(fn(theArray[i], i, theArray));
+      }
+      return results;
+    }
+  </script>
+
+</head>
+
+<body>
+  <script type="text/javascript">
+    //get the square function
+    var square = function(el) {
+        return el * el;
+      }
+      //array of numbers
+    var numbers = [2, 3, 4, 5, 6];
+    //invoking above function : map()
+    var results = numbers.map(square);
+    alert(results); //this shows [4,9,16,25,36]
+  </script>
+
+</body>
+
+</html>

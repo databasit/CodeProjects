@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample More on array 2</title>
+  <script type="text/javascript">
+    var pets = ["Dog", "Cats", "Rabbit", "Hamster",
+      "Rabbit", "Rabbit", "Dog", "Cat",
+      "Hamster", "Hamster", "Rabbit"
+    ];
+    var rabbitPositions = [],
+      startSearchAt = 0;
+
+    do {
+      foundAt = pets.indexOf("Rabbit", startSearchAt);
+      if (foundAt != -1) {
+        rabbitPositions.push(foundAt);
+        startSearchAt = foundAt + 1;
+      }
+    } while (foundAt != -1)
+    alert(rabbitPositions); //This shows [2,4,5,10]
+
+    var pets_2 = ["Dog", "Cats", "Rabbit", "Hamster",
+      "Rabbit", "Rabbit", "Dog", "Cat",
+      "Hamster", "Hamster", "Rabbit"
+    ];
+    alert("Here all elements from the array pets_2: " + pets_2.join());
+    element_to_search = prompt("what element do you want to search ?");
+    //starting from the last element in array, search from the end going backwards
+    alert("The position of the element was: " + pets_2.lastIndexOf(element_to_search));
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
