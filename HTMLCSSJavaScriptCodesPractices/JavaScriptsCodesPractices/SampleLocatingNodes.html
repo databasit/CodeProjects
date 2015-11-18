@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample javascript locating nodes</title>
+  <script type="text/javascript">
+    function change_color1() {
+      document.childNodes[0].childNodes[2].childNodes[1].style.color = "red";
+    }
+
+    function change_color2() {
+      document.getElementsByTagName("h2")[0].style.color = "yellow";
+    }
+
+    function change_color3() {
+      document.getElementById("cute_text").style.color = "blue";
+    }
+
+    //sample setAttribute function
+    function samplesetAttribute(myNode, textSize, textColor) {
+      var target_node = document.getElementById(myNode);
+
+      textSize = prompt("What text size do you want to apply on your div section element?\n [1-100 %] ");
+      var text_size_input = parseInt(textSize);
+      target_node.setAttribute("style", "font-size:" + text_size_input + '%');
+
+      textColor = prompt("What text color do you want to apply on your div section element?");
+      target_node.setAttribute("style", "color:" + textColor);
+
+    }
+  </script>
+
+  <style>
+    #section {
+      width: 350px;
+      float: left;
+      padding: 10px;
+      background-color: Blue;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h2 stye="color:black" id="cute_text">click on button to change the color</h2>
+  <div id="section">hola</div>
+  <input onclick="change_color1()" type="button" value="Change using method 1">
+  <input onclick="change_color2()" type="button" value="Change using method 2">
+  <input onclick="change_color3()" type="button" value="Change using method 3">
+  <input type="button" onclick="samplesetAttribute('section')" value="Change with setAttribute">
+</body>
+
+</html>

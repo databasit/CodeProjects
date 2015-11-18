@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample javascript addingNodes</title>
+  <script type="text/javascript">
+    function insert_new_element() {
+      var newItem = document.createElement("hr");
+
+      var destParent = document.getElementsByTagName("body")[0];
+      destParent.insertBefore(newItem, destParent.firstChild);
+
+    }
+
+    //Adding Nodes - Appendchild()
+   function insert_new_text(){
+       var newText = document.createTextNode(
+           "This is dynamically added text!");
+      var textpart = document.getElementById("my_text2");
+      textpart.appendChild(newText);
+   }
+
+  </script>
+
+</head>
+
+<body onclick="insert_new_element()">
+  <h1 id="my_text1">Please click on the page</h1>
+   <input onclick="insert_new_text()" type="button" value="Click here to add text onto the h1 tag">
+  <h1 id="my_text2"></h1>
+</body>
+
+</html>
