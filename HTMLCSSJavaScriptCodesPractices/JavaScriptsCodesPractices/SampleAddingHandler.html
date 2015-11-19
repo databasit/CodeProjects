@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Sample javascript adding Handler</title>
+
+      <script type="text/javascript">
+       function do_something(){
+         alert("Page has loaded")
+       }
+
+       //invoque the event handler : onload
+       window.onload =do_something()
+
+      //other way is adding handler: addEventListener
+   function do_something2(){
+        //  -- >  alert("Page has loaded");
+        //  --->  window.addEventListener("load",do_something2);
+   }
+
+      </script>
+  </head>
+  <body>
+
+  </body>
+</html>

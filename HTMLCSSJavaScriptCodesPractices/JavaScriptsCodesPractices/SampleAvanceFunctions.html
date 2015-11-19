@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample javascript avance functions</title>
+
+  <script type="text/javascript">
+    /*
+                  assign a function to  a variable
+                  pass a function to a function
+                  return a function from a function
+
+                */
+    function check(a, b) {
+      if (b != 0) return true;
+      else return false;
+    }
+
+    function myDivide(fn, num, div) {
+      if (fn(num, div)) {
+        alert("It's OK!");
+        return num / div;
+      } else {
+        alert("Not OK!")
+      }
+
+    }
+    result = myDivide(check, 44, 1);
+
+    //function_returns_function.html
+    function counter() {
+      var count = 0;
+
+      return function() {
+        count++;
+        alert(count);
+      }
+
+    }
+    var count = counter();
+    count();
+    count();
+    count();
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sample javascript cloning node</title>
+  <script type="text/javascript">
+    //cloning a Node
+    function myFunction() {
+      var the_node = document.getElementById("myList").lastChild;
+      var the_clone = the_node.cloneNode();
+      document.getElementById("myList").appendChild(the_clone);
+    }
+
+    // cloning a Branch,the different is : cloneNode(true)
+    function myFunction2() {
+      var the_node = document.getElementById("myList").lastChild;
+      var the_clone = the_node.cloneNode(true);
+      document.getElementById("myList").appendChild(the_clone);
+    }
+
+  </script>
+</head>
+<body>
+  <ul id="myList">
+    <li>Good Morning</li>
+    <li>Hello</li></ul>
+  <p>Click on the button to cloneNode</p>
+  <button onclick="myFunction()">Copy it!</button>
+  <button onclick="myFunction2()">Copy Branch!</button>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title> Samlpe javascript timer</title>
+  <script type="text/javascript">
+    var wait_duration;
+
+    function set_things_up() {
+      wait_duration = prompt("How long do you  want to sleep?");
+
+      setTimeout(show_make_up_message, wait_duration);
+    }
+
+    function show_make_up_message() {
+      alert("WAKE UP! WAKE UP! WAKE UP!");
+    }
+  </script>
+
+</head>
+
+<body onload="set_things_up()">
+  <h1>Alarm clock example</h1>
+
+</body>
+
+</html>
