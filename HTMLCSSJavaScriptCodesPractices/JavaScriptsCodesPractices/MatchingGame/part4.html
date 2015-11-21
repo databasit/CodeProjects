@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>The Matching Game</title>
+
+  <script type="text/javascript">
+    //global variables
+    var numberOfFaces = 5;
+    var againGame = false;
+    var face_sad_img = document.createElement("img");
+    face_sad_img.setAttribute("src", "http://www.clipartbest.com/cliparts/Rid/KyX/RidKyXarT.png");
+
+    function generateFaces() {
+
+      //Function variables
+      var theLeftSide = document.getElementById("leftSide");
+      var theRightSide = document.getElementById("rightSide");
+      var theBody = document.getElementsByTagName("body")[0];
+
+      //generating random face left Side
+      for (var new_face = 0; new_face < numberOfFaces; new_face++) {
+        var face_smile_img = document.createElement("img");
+        face_smile_img.setAttribute("src", "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png")
+
+        var randomTop = Math.floor(Math.random() * 400);
+        var randomLeft = Math.floor(Math.random() * 400);
+
+        face_smile_img.style.top = randomTop + "px";
+        face_smile_img.style.left = randomLeft + "px";
+
+        theLeftSide.appendChild(face_smile_img);
+
+      }
+
+      //cloning the right Side
+      var leftSideImages = theLeftSide.cloneNode(true);
+      leftSideImages.removeChild(leftSideImages.lastChild);
+      theRightSide.appendChild(leftSideImages);
+
+      //player does Click extra face
+      theLeftSide.lastChild.onclick =
+        function nextLevel(event) {
+          event.stopPropagation();
+          numberOfFaces += 5;
+          generateFaces();
+        }
+
+      //player does click on anything except the correct face
+      theBody.onclick = function gameOver() {
+        alert("Game Over!");
+        theBody.onclick = null;
+        theLeftSide.lastChild.onclick = null;
+        playAgain();
+      }
+
+      //clears screen
+      function screen_clear() {
+        while (theBody.firstChild)
+          theBody.removeChild(theBody.firstChild);
+      }
+      //play again
+      function playAgain() {
+        var txt;
+        againGame = confirm("Do you want to play again ?");
+        if (againGame == true) {
+          //refresh the page
+          screen_clear();
+          location.reload();
+        } else {
+          alert("Good Bye!");
+          var divEmpty = document.getElementById("empty");
+          rightSide.appendChild(face_sad_img);
+        }
+      }
+    } // Ends function generateFaces
+  </script>
+
+  <style>
+    img {
+      position: absolute;
+    }
+
+    div {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+    }
+
+    #rightSide {
+      left: 500px;
+      border-left: 3px solid black;
+    }
+
+    h1 {
+      font-size: 35px;
+      line-height: 40px;
+      background-color: black;
+      color: white;
+      opacity: 0.8;
+      padding-left: 10px;
+    }
+
+    p {
+      color: blue;
+      font-size: 20px;
+      padding-left: 10px;
+    }
+  </style>
+</head>
+
+<body onload="generateFaces()">
+  <h1> Matching Game</h1>
+  <P>Click on the extra smiling face on the left.</p>
+  <div id="leftSide"></div>
+  <div id="rightSide"></div>
+  </div>
+</body>
+
+</html>
