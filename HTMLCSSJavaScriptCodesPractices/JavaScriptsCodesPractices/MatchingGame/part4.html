@@ -6,11 +6,15 @@
   <title>The Matching Game</title>
 
   <script type="text/javascript">
+    //@The Matchine Game @by erickson Figueroa
+
     //global variables
     var numberOfFaces = 5;
+    var guessed = 0;
     var againGame = false;
     var face_sad_img = document.createElement("img");
     face_sad_img.setAttribute("src", "http://www.clipartbest.com/cliparts/Rid/KyX/RidKyXarT.png");
+
 
     function generateFaces() {
 
@@ -36,6 +40,7 @@
 
       //cloning the right Side
       var leftSideImages = theLeftSide.cloneNode(true);
+      leftSideImages.removeAttribute("id");
       leftSideImages.removeChild(leftSideImages.lastChild);
       theRightSide.appendChild(leftSideImages);
 
@@ -44,10 +49,28 @@
         function nextLevel(event) {
           event.stopPropagation();
           numberOfFaces += 5;
-          generateFaces();
+          scoreCount();
+          screenClear(theRightSide);
+          screenClear(theLeftSide);
+          generateFaces(theRightSide);
+
         }
 
-      //player does click on anything except the correct face
+      // player score
+      function scoreCount() {
+        clearScore();
+        guessed = guessed + 1;
+        var container = document.createTextNode(
+          guessed.toString());
+        var node = document.getElementById("score");
+        node.appendChild(container);
+      }
+      //clear the player score
+      function clearScore() {
+        document.getElementsByTagName("span")[0].innerHTML = "";
+      }
+
+      //Game Over: player does click on anything except the correct face
       theBody.onclick = function gameOver() {
         alert("Game Over!");
         theBody.onclick = null;
@@ -56,17 +79,18 @@
       }
 
       //clears screen
-      function screen_clear() {
-        while (theBody.firstChild)
-          theBody.removeChild(theBody.firstChild);
+      function screenClear(side_node) {
+        while (side_node.lastChild) {
+          side_node.removeChild(side_node.lastChild);
+        }
       }
+
       //play again
       function playAgain() {
         var txt;
         againGame = confirm("Do you want to play again ?");
         if (againGame == true) {
           //refresh the page
-          screen_clear();
           location.reload();
         } else {
           alert("Good Bye!");
@@ -74,6 +98,26 @@
           rightSide.appendChild(face_sad_img);
         }
       }
+      //clock
+      function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML =
+          h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+      }
+
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i
+        }; // add zero in front of numbers < 10
+        return i;
+      }
+
     } // Ends function generateFaces
   </script>
 
@@ -100,21 +144,53 @@
       color: white;
       opacity: 0.8;
       padding-left: 10px;
+      font-family: "Times New Roman", Georgia, Serif;
     }
 
     p {
       color: blue;
       font-size: 20px;
       padding-left: 10px;
+      font-family: "Times New Roman", Georgia, Serif;
+    }
+
+    #score {
+      color: yellow;
+      font-size: 40pt;
+      font-family: "Times New Roman", Georgia, Serif;
+      text-align: center;
+      display: block;
+    }
+
+    #scoreboard {
+      position: fixed;
+      width: 80px;
+      height: 80px;
+      top: 6em;
+      right: 9em;
+      background-color: black;
+      text-align: center;
+      box-shadow: 10px 10px 30px #888888;
+      color: white;
+      font-weight: bold;
+      font-family: "Times New Roman", Georgia, Serif;
     }
   </style>
+
+
 </head>
 
-<body onload="generateFaces()">
+<body onload="generateFace()">
   <h1> Matching Game</h1>
+  <div id="scoreboard">Guessed
+    <span id="score"></span>
+  </div>
   <P>Click on the extra smiling face on the left.</p>
+
   <div id="leftSide"></div>
   <div id="rightSide"></div>
+
+
   </div>
 </body>
 
