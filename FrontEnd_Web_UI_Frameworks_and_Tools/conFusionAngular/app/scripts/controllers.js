@@ -65,7 +65,6 @@ angular.module('confusionApp')
     $scope.invalidChannelSelection = false;
 
 }])
-
 .controller('FeedbackController', ['$scope', function ($scope) {
 
     $scope.sendFeedback = function () {
