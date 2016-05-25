@@ -10,15 +10,15 @@ angular.module('confusionApp')
     $scope.showMenu =false;
     $scope.message = "Loading ...";
 
-    //using $resource REST API to get the data
-    menuFactory.getDishes().query(
-       function(response) {
-           $scope.dishes = response;
-           $scope.showMenu = true;
-       },
-       function(response) {
-           $scope.message = "Error: "+response.status + " " + response.statusText;
-       });
+        //get dish using $resource REST API to get the data
+        menuFactory.getDishes().query(
+               function(response) {
+                   $scope.dishes = response;
+                   $scope.showMenu = true;
+               },
+               function(response) {
+                   $scope.message = "Error: "+response.status + " " + response.statusText;
+          });
 
     $scope.select = function (setTab) {
         $scope.tab = setTab;
@@ -144,11 +144,12 @@ angular.module('confusionApp')
 .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function ($scope, menuFactory, corporateFactory)
     {
 
-        //$scope.dish = dish;
          $scope.showDish = false;
+         $scope.showPromotion = false;
          $scope.message="Loading ...";
 
-         $scope.dish = menuFactory.getDishes().get({id:0})
+          //get dish
+           $scope.dish = menuFactory.getDishes().query()
           .$promise.then(
               function(response){
                   $scope.dish = response;
@@ -159,8 +160,18 @@ angular.module('confusionApp')
               }
           );
 
-        var promotion = menuFactory.getPromotions();
-        $scope.promotion = promotion;
+           //get promotions
+           $scope.promotion = menuFactory.getPromotions().query()
+          .$promise.then(
+              function (response){
+                  $scope.promotion = response;
+                  $scope.showPromotion = true;
+               },
+              function(response){
+                $scope.message = "Error: "+response.status + " " + response.statusText;
+              }
+          );
+
 
         var leader = corporateFactory.getLeaders();
         $scope.leader = leader;

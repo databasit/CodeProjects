@@ -7,32 +7,20 @@ angular.module('confusionApp')
 
 function ($resource,baseURL) {
 
-    var promotions = [
-        {
-            _id: 0,
-            name: 'Weekend Grand Buffet',
-            image: 'images/buffet.png',
-            label: 'New',
-            price: '19.99',
-            description: 'Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person ',
-                }
-            ];
 
     this.getDishes = function () {
         //http srevice to return the dishes' data from json-server:http://localhost:3000/dishes
-       return $resource(baseURL+"dishes/:id",null,  {'update':{method:'PUT' }});
+       return $resource(baseURL+"dishes/:id",null,  {'get':{method:'GET' }});
 
     };
 
     // implement a function named getPromotion
     // that returns a selected promotion.
-
-    this.getPromotion = function (index) {
-        return promotions[index];
-    };
-
     this.getPromotions = function () {
-        return promotions;
+        //http://localhost:3000/promotions
+        //return $resource (baseURL+"promotions/:id",null, {'get':{method:'GET'}});
+        return $resource (baseURL+"promotions/:id",null, {'get':{method:'GET' }});
+
     };
 
 }])
