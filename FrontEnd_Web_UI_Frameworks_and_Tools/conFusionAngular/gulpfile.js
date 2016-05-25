@@ -48,10 +48,11 @@ gulp.task('imagemin', function() {
     .pipe(notify({ message: 'Images task complete' }));
 });
 
+//Copy fonts
 gulp.task('copyfonts', ['clean'], function() {
-   gulp.src('app/bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
+   gulp.src('bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
    .pipe(gulp.dest('./dist/fonts'));
-   gulp.src('app/bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*')
+   gulp.src('bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*')
    .pipe(gulp.dest('./dist/fonts'));
 });
 
