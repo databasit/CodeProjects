@@ -145,6 +145,7 @@ angular.module('confusionApp')
 
          $scope.showDish = false;
          $scope.showPromotion = false;
+         $scope.showLeader = false;
          $scope.message="Loading ...";
 
           //get dish
@@ -170,18 +171,40 @@ angular.module('confusionApp')
                 $scope.message = "Error: "+response.status + " " + response.statusText;
               }
           );
-
-
-        var leader = corporateFactory.getLeaders();
-        $scope.leader = leader;
-
+        
+        //get only one leadership 
+        $scope.leader = menuFactory.getLeaders().get({id:3})
+          .$promise.then(
+              function (response){
+                  $scope.leader = response;
+                  $scope.showLeader = true;
+               },
+              function(response){
+                $scope.message = "Error: "+response.status + " " + response.statusText;
+              }
+          );
 }])
 
 .controller('AboutController', ['$scope', '$stateParams', 'corporateFactory', function ($scope, $stateParams, corporateFactory)
     {
-        //get all leaders
-        $scope.leaders = corporateFactory.getLeaders();
-        //get leader by array index
-        var leader = corporateFactory.getLeader(parseInt($stateParams.id, 10));
 
+          // $scope.leaders = corporateFactory.getLeaders();
+         //  get leader by array index: un solo leader (verificar esta parte si es necesaria)
+        //   quitar dependencia si no es necesaria
+       //    var leader = corporateFactory.getLeader(parseInt($stateParams.id, 10));
+
+         $scope.showLeaders = false;
+         $scope.message="Loading ...";
+
+           //get all leaders
+           $scope.promotion = corporateFactory.getLeaders().query()
+          .$promise.then(
+              function (response){
+                  $scope.leaders = response;
+                  $scope.showLeaders = true;
+               },
+              function(response){
+                $scope.message = "Error: "+response.status + " " + response.statusText;
+              }
+          );
 }]);

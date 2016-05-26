@@ -51,20 +51,23 @@
 
     <div class="row row-content">
         <div class="col-xs-12 col-sm-3 col-sm-push-9">
-            <p style="padding:20px;"></p>
+         <div ng-if="!leader">
+           <h3>{{message}}</h3>
+              </div>
+               <p style="padding:20px;"></p>
             <h3 align=center>Meet our Culinary Specialists</h3>
-        </div>
-        <div class="col-xs-12 col-sm-9 col-sm-pull-3">
+         </div>
+        <div class="col-xs-12 col-sm-9 col-sm-pull-3" ng-if="leader">
             <div class="media" ng-repeat="myLeader in leader | limitTo:-1">
                 <div class="media-left media-middle">
                     <a href="#">
                         <img class="media-object img-thumbnail" ng-src={{myLeader.image}} alt="Uthappizza" ng-show($last)></a>
-                    </a>
+                     </a>
                 </div>
-                <div class="media-body">
-                    <h2 class="media-heading" ng-show="$last">{{myLeader.name}} <small>{{myLeader.designation}}</small>
-            </h2>
-                    <p>{{myLeader.description}}
+                   <div class="media-body">
+                      <h2 class="media-heading" ng-show="$last">{{myLeader.name}} <small>{{myLeader.designation}}</small>
+                        </h2>
+                      <p>{{myLeader.description}}
                     </p>
                 </div>
             </div>
