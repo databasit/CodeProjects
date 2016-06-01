@@ -335,6 +335,18 @@
       },
       "comments": "I'm the best!",
       "id": 2
+    },
+    {
+      "mychannel": "tel",
+      "firstName": "test",
+      "lastName": "testing",
+      "agree": true,
+      "email": "indetrd@gmail.com",
+      "tel": {
+        "number": "000009999"
+      },
+      "comments": "hola",
+      "id": 3
     }
   ]
 }

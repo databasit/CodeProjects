@@ -137,56 +137,47 @@ angular.module('confusionApp')
 }])
 
 // implement the IndexController and About Controller here
-.controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
+.controller('IndexController', ['$scope','menuFactory', 'corporateFactory', function($scope,menuFactory, corporateFactory) {
 
     $scope.showDish = false;
     $scope.showPromotion = false;
     $scope.showLeader = false;
     $scope.message = "Loading ...";
 
-    //get dish
-    $scope.dish = menuFactory.getDishes().query()
-        .$promise.then(
-            function(response) {
-                $scope.dish = response;
-                $scope.showDish = true;
-            },
-            function(response) {
-                $scope.message = "Error: " + response.status + " " + response.statusText;
-            }
-        );
+     //$scope.dish = menuFactory.getDishes().get({id:0})
+     $scope.dish = menuFactory.getDishes().query().
+    $promise.then(function (response) {
+          $scope.dish = response;
+          $scope.showDish = true;
+        },
+        function (response) {
+          $scope.message = "Error: " + response.status + " " + response.statusText;
+        });
 
-    //get promotions
-    $scope.promotion = menuFactory.getPromotions().query()
-        .$promise.then(
-            function(response) {
-                $scope.promotion = response;
-                $scope.showPromotion = true;
-            },
-            function(response) {
-                $scope.message = "Error: " + response.status + " " + response.statusText;
-            }
-        );
+   // using by only value: $scope.promotion = menuFactory.getPromotion().get({id:0})
+    $scope.promotion = menuFactory.getPromotion().query()
+    		.$promise.then(function (response) {
+    					$scope.promotion = response;
+    					$scope.showPromotion = true;
+    				},
+    				function (response) {
+    					$scope.message = "Error: " + response.status + " " + response.statusText;
+    				});
 
-    //get only one leadership
-    $scope.leader = corporateFactory.getLeaders().query()
-        .$promise.then(
-            function(response) {
-                $scope.leader = response;
-                $scope.showLeader = true;
-            },
-            function(response) {
-                $scope.message = "Error: " + response.status + " " + response.statusText;
-            }
-        );
+        //$scope.leader = corporateFactory.getLeaders().get({id:3})
+        $scope.leader = corporateFactory.getLeaders().query()
+        .$promise.then(function (response) {
+        			$scope.leader = response;
+        			$scope.showLeader = true;
+        		},
+        		function (response) {
+        			$scope.message = "Error: " + response.status + " " + response.statusText;
+        		});
+
 }])
 
 .controller('AboutController', ['$scope', '$stateParams', 'corporateFactory', function($scope, $stateParams, corporateFactory) {
 
-    // $scope.leaders = corporateFactory.getLeaders();
-    //  get leader by array index: un solo leader (verificar esta parte si es necesaria)
-    //   quitar dependencia si no es necesaria
-    //    var leader = corporateFactory.getLeader(parseInt($stateParams.id, 10));
     $scope.showLeaders = false;
     $scope.message = "Loading ...";
 
