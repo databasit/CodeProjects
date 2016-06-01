@@ -11,6 +11,7 @@ angular.module('confusionApp')
             return $resource(baseURL+"dishes/:id", null, {'get':{method:'GET'}});
        };
 
+<<<<<<< HEAD
        this.getPromotion = function() {
              return $resource(baseURL+"promotions/:id");
          };
@@ -39,5 +40,33 @@ angular.module('confusionApp')
        };
 
     return feedbackFacSource;
+=======
+    this.getDishes = function () {
+        //http srevice to return the dishes' data from json-server:http://localhost:3000/dishes
+       return $resource(baseURL+"dishes/:id",null,  {'get':{method:'GET' }});
+
+    };
+
+    // implement a function named getPromotion
+    // that returns a selected promotion.
+    this.getPromotions = function () {
+        //http://localhost:3000/promotions
+        //return $resource (baseURL+"promotions/:id",null, {'get':{method:'GET'}});
+        return $resource (baseURL+"promotions/:id",null, {'get':{method:'GET' }});
+    };
+
+
+}])
+
+.factory('corporateFactory',['$resource', 'baseURL',
+
+function ($resource,baseURL) {
+
+ this.getLeaders = function () {
+        //http srevice to return the dishes' data from json-server:http://localhost:3000/dishes
+       return $resource (baseURL+"leadership/:id",null,  {'get':{method:'GET' }});
+
+    };
+>>>>>>> c945cf907cbd9e9a992b9f0f2b1b3c36543a815e
 
 }]);
